@@ -2,14 +2,13 @@
 # input will come from buttons and an input field
 # all output for the game will be printed in the console
 
-
+import simplegui
+import random
 
 # helper function to start and restart the game
 def new_game():
-    # initialize global variables used in your code here
-
-    # remove this when you add your code    
-    pass
+    global secret_number
+    secret_number = random.randrange(0,100)
 
 
 # define event handlers for control panel
@@ -25,17 +24,22 @@ def range1000():
     pass
     
 def input_guess(guess):
-    # main game logic goes here	
+    """ compare entered_number with secret_number """
+    global entered_number
+    global secret_number
     
-    # remove this when you add your code
-    pass
+    print "Guess was " + guess
+    entered_number = int(guess)
+    
 
     
 # create frame
-
+frame = simplegui.create_frame("Guess the number",300,300)
 
 # register event handlers for control elements and start frame
+frame.add_input("Enter a guess:", input_guess, 100)
 
+frame.start()
 
 # call new_game 
 new_game()
