@@ -1,16 +1,39 @@
+
 shoppingList = []
 
-print("what should we pick up at the store")
-print("enter 'DONE' to stop")
+def showHelp():
+    print("what should we pick up at the store")
+    print("""
+"enter 'DONE' to stop"
+"enter 'HELP' to show help"
+"enter 'SHOW' to display current list"
+""")
+
+def showList():
+    print("here it's your shopping list:")
+    for item in shoppingList:
+        print(item)
+
+def addToList(item):
+    shoppingList.append(item)
+    print("added {}, list now has {} items".format(newItem, len(shoppingList)))
+    
+
+showHelp();
 
 while True:
     newItem = input("> ")
 
     if newItem == 'DONE':
         break;
-    else:
-    shoppingList.append(newItem)
+    elif newItem == 'HELP':
+        showHelp()
+        continue
+    elif newItem == 'SHOW':
+        showList()
+        continue
 
-print("here it's your shopping list:")
-for item in shoppingList:
-    print(item)
+    addToList(newItem)
+
+
+showList()
