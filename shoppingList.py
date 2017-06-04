@@ -22,11 +22,9 @@ def showList():
     clearScreen()
     print("here it's your shopping list:")
 
-    index = 1
-    for item in shoppingList:
-        print("{}. {}".format(index, item))
-        index += 1
-    print("-"*10)
+    for index, item in enumerate(shoppingList, start=1):
+        print("{}. {}".format(index + 1, item))
+    print("-" * 10)
 
 
 def addToList(item):
