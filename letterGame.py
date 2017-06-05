@@ -29,13 +29,12 @@ def draw(goodGuesses, badGuesses, secretWord):
     print('')
 
 
-def getGuess(goodGuesses, badGuesses):
+def getGuess(guesses):
     while True:
         guess = input('guess a letter: ').lower()
-
         if len(guess) != 1:
             print('please enter only one letter !')
-        elif guess in goodGuesses or guess in badGuesses:
+        elif guess in guesses:
             print('you already guessed that letter !')
         elif not guess.isalpha():
             print('letters please, not numbers !')
@@ -44,27 +43,24 @@ def getGuess(goodGuesses, badGuesses):
 
 
 def play(done):
-    clear();
+    clear()
     secretWord = random.choice(words)
-    goodGuesses = []
-    badGuesses = []
+    goodGuesses = set()
+    badGuesses = set()
+    word_set = set(words)
 
     while True:
         draw(goodGuesses, badGuesses, secretWord)
-        guess = getGuess(goodGuesses, badGuesses)
+        guess = getGuess(goodGuesses | badGuesses)
 
-        if guess in secretWord:
-            goodGuesses.append(guess)
-            found = True
-            for letter in secretWord:
-                if letter not in goodGuesses:
-                    found = False
-            if found == True:
+        if guess in word_set:
+            goodGuesses.add(guess)
+            if not (word_set.symmetric_difference(goodGuesses)):
                 print('you win :) ')
                 print('the secret word was {}'.format(secretWord))
                 done = True
         else:
-            badGuesses.append(guess)
+            badGuesses.add(guess)
             if len(badGuesses) == 7:
                 draw(goodGuesses, badGuesses, secretWord)
                 print('you lost :( ')
