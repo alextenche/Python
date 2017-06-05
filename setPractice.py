@@ -48,10 +48,20 @@ COURSES = {
 
 testTopics = {"PHP", "Python"}
 
+
 def covers(searchTopics):
     result = []
     for keyCourse, valueCourse in COURSES.items():
         checkSet = set(valueCourse)
         if (searchTopics.intersection(checkSet)):
+            result.append(keyCourse)
+    return result
+
+
+def covers_all(searchTopics):
+    result = []
+    for keyCourse, valueCourse in COURSES.items():
+        checkSet = set(valueCourse)
+        if (searchTopics.issubset(checkSet)):
             result.append(keyCourse)
     return result
