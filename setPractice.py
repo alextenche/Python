@@ -11,7 +11,7 @@ print(type(c))
 # add, update
 songs = {"first", "second", "third"}
 songs.add("Treehouse Hula")
-songs.update({"Python Two-Step", "Ruby Rhumba"},{"last song"})
+songs.update({"Python Two-Step", "Ruby Rhumba"}, {"last song"})
 
 # operations
 set1 = set(range(10))
@@ -50,9 +50,8 @@ testTopics = {"PHP", "Python"}
 
 def covers(searchTopics):
     result = []
-    for course in COURSES.items():
-        if (testTopics.intersection(course[1])):
-            result.append(course[0])
+    for keyCourse, valueCourse in COURSES.items():
+        checkSet = set(valueCourse)
+        if (searchTopics.intersection(checkSet)):
+            result.append(keyCourse)
     return result
-
-print(covers(testTopics))
