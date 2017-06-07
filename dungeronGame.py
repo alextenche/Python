@@ -1,5 +1,8 @@
+import logging
 import os
 import random
+
+logging.basicConfig(filename="game.log", level=logging.DEBUG)
 
 import sys
 
@@ -69,6 +72,7 @@ def draw_map(player):
 
 def game_loop():
     monster, door, player = get_locations()
+    logging.info("monster: {}; door: {}; player: {}".format(monster, door, player))
     playing = True
 
     while playing:
