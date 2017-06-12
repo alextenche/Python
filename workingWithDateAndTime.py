@@ -41,3 +41,7 @@ def minutes(dt1, dt2):
 
 
 print(minutes(now, start_work))
+
+
+def time_tango(input_date, input_time):
+    return datetime.datetime.combine(input_date, input_time)
