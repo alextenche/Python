@@ -12,10 +12,11 @@ def linear_search(L, v):
     """
 
     i = 0
-    while i != len(L) and v != L[i]:
+    length = len(L)
+    while i != length and v != L[i]:
         i = i + 1
 
-    if i == len(L):
+    if i == length:
         return -1
     else:
         return i
