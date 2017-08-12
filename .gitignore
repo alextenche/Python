@@ -3,3 +3,5 @@
 MiniProjects/
 MiniProjects/*
 .idea
+__pycache__
+*.pyc
